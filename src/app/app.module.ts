@@ -10,10 +10,19 @@ import {
   Validators, 
   FormBuilder } from '@angular/forms';
 
-import { MatCardModule, MatMenuModule, MatStepperModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatIconModule, MatRadioModule, MatDividerModule, MatCheckboxModule, MatDatepickerModule, MatNativeDateModule, MatSelectModule } from '@angular/material';
+import { MatCardModule, MatMenuModule, MatStepperModule, MatFormFieldModule,
+   MatInputModule, MatButtonModule, MatIconModule, MatRadioModule, 
+   MatDividerModule, MatCheckboxModule, MatDatepickerModule, MatNativeDateModule, 
+   MatSelectModule, 
+   MatSidenavModule} from '@angular/material';
+
+import { Ng2StickyModule } from 'ng2-sticky';
 
 import { AppComponent } from './app.component';
 import { EnrollmentProcessComponent } from './components/enrollment-process/enrollment-process.component';
+import { HeaderComponent } from './components/header/header.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { SideNavService } from './service/side-nav.service';
 
 const routes: Routes = [
   {path: '', component: EnrollmentProcessComponent}
@@ -22,7 +31,9 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    EnrollmentProcessComponent
+    EnrollmentProcessComponent,
+    HeaderComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
@@ -42,9 +53,11 @@ const routes: Routes = [
     MatCheckboxModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatSelectModule
+    MatSelectModule,
+    Ng2StickyModule,
+    MatSidenavModule
   ],
-  providers: [MatDatepickerModule],
+  providers: [MatDatepickerModule,SideNavService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { MatSidenav } from '@angular/material';
+import { SideNavService } from '../../service/side-nav.service';
 
 @Component({
   selector: 'app-enrollment-process',
@@ -8,7 +10,9 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 })
 export class EnrollmentProcessComponent implements OnInit {
 
-  isLinear = false;
+  @ViewChild('sidenav') public sidenav: MatSidenav;
+
+  isLinear = true;
   planSelectForm: FormGroup;
   memberDetails: FormGroup;
   additionsForm: FormGroup;
@@ -28,9 +32,10 @@ export class EnrollmentProcessComponent implements OnInit {
     {id: 'Other', value: 'Other'}
   ];
 
-  constructor(private _formBuilder: FormBuilder) {}
+  constructor(private _formBuilder: FormBuilder,private sidenavService: SideNavService) {}
 
   ngOnInit() {
+    this.sidenavService.setSidenav(this.sidenav);
     this.planSelectForm = this._formBuilder.group({
       memberShip: ['', Validators.required],
       memberShipType: ['', Validators.required],
@@ -65,10 +70,10 @@ export class EnrollmentProcessComponent implements OnInit {
     if(this.planSelectForm.valid){
       console.log(data)
     } else {
-      this.planSelectForm.controls['firstName'].markAsTouched();
-      this.planSelectForm.controls['lastName'].markAsTouched();
-      this.planSelectForm.controls['phoneNo'].markAsTouched();
-      this.planSelectForm.controls['birthDate'].markAsTouched();
+      this.planSelectForm.controls['memberShip'].markAsTouched();
+      this.planSelectForm.controls['memberShipType'].markAsTouched();
+      this.planSelectForm.controls['memberShipTerm'].markAsTouched();
+      this.planSelectForm.controls['maxTripLength'].markAsTouched();
     }
   }
 
@@ -76,10 +81,10 @@ export class EnrollmentProcessComponent implements OnInit {
     if(this.memberDetails.valid){
       console.log(data)
     } else {
-      this.memberDetails.controls['memberShip'].markAsTouched();
-      this.memberDetails.controls['memberShipType'].markAsTouched();
-      this.memberDetails.controls['memberShipTerm'].markAsTouched();
-      this.memberDetails.controls['maxTripLength'].markAsTouched();
+      this.memberDetails.controls['firstName'].markAsTouched();
+      this.memberDetails.controls['lastName'].markAsTouched();
+      this.memberDetails.controls['phoneNo'].markAsTouched();
+      this.memberDetails.controls['birthDate'].markAsTouched();
     }
   }
 

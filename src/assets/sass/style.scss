@@ -45,10 +45,11 @@ p{
     @include font-size(12px)
 }
 nav {
-    .mat-card{
-        background: $black-color;
-        @include border-radius(0)
-    }
+    background: $black-color;
+    @include border-radius(0)
+}
+.nav-menu-icon{
+    padding-top: 2px;
 }
 .container{
     max-width: $container-large-desktop
@@ -59,6 +60,17 @@ section {
         h4{
             font-size: 1.3rem !important
         }
+    }
+}
+.mat-sidenav{
+    width: 20%;
+}
+.sidebar-sticky{
+    .nav-link{
+        color: $black-color;
+    }
+    .nav-link:hover{
+        color: $primary-color;
     }
 }
 .mat-stepper-horizontal{
@@ -177,3 +189,30 @@ a{
         color: #fff;
     }
 }
+.mat-radio-button.mat-accent .mat-radio-inner-circle,
+.mat-checkbox-checked.mat-accent .mat-checkbox-background, 
+.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background{
+    background: $primary-color;
+}
+.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle{
+    border-color: $primary-color;
+}
+.mat-checkbox-label{
+    word-break: break-all;
+}
+.long-text-checkbox .mat-checkbox-inner-container{
+    margin-top: 5px;
+    display: flex;
+    align-self: flex-start
+}
+footer{
+    background: $black-color;
+    color: #fff;
+    height: 300px;
+}
+
+@media (max-width: 576px) {
+    .mat-sidenav{
+        width: 65%;
+    }
+ }
