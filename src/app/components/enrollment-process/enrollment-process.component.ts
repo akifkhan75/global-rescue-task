@@ -66,6 +66,7 @@ export class EnrollmentProcessComponent implements OnInit {
     this.maxTripLength = this.planSelectForm.get('maxTripLength').value !="" ? this.planSelectForm.get('maxTripLength').value : 'Please Select';;
   }
 
+  // add membership plan
   addMemberShipPlan(data){
     if(this.planSelectForm.valid){
       console.log(data)
