@@ -104,8 +104,25 @@ section {
 .mat-checkbox-layout{
     margin-bottom: 0 !important;
 }
+.mat-step-header .mat-step-icon{
+    background-color: $primary-color !important;
+}
 .mat-horizontal-content-container{
     @include padding-all(0px);
+}
+.mat-fab.mat-primary, .mat-flat-button.mat-primary, .mat-mini-fab.mat-primary, .mat-raised-button.mat-primary{
+    background-color: $primary-color !important;
+}
+.form-title{
+    @include padding(0, 0, 7px, 0);
+    border-bottom: solid 1px $primary-color;
+    ::after{
+        content: "";
+        position: absolute;
+        width: 100px;
+        height: 20px;
+        background: $primary-color;
+    }
 }
 .form-error{
     display: block;
@@ -129,7 +146,7 @@ section {
     font-size: 14px !important;
 }
 .mat-form-field{
-    display: block !important
+    display: block;
 }
 a{
     color: $primary-color;
@@ -152,5 +169,11 @@ a{
             @include padding(0.3rem, 0.3rem, 0.3rem, 0.3rem);
             font-size: 12px !important;
         }
+    }
+}
+.input-group-text{
+    background: $primary-color;
+    .mat-icon{
+        color: #fff;
     }
 }

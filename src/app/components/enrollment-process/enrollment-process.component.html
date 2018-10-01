@@ -208,7 +208,7 @@
         </form>
       </mat-step>
       <mat-step [stepControl]="memberDetails">
-        <form [formGroup]="memberDetails">
+        <form [formGroup]="memberDetails" (submit)="addMemberShipPlan(memberDetails.value)">
           <ng-template matStepLabel>Member Details</ng-template>
           <div class="row mb-5">
             <div class="col-sm-9">
@@ -255,7 +255,7 @@
                 </div>
                 <div class="form-group row">
                   <div class="col-sm-4">
-                    <mat-form-field>
+                    <mat-form-field class="d-block">
                       <input matInput [matDatepicker]="birthDate" formControlName="birthDate" placeholder="Birth Date">
                       <mat-datepicker-toggle matSuffix [for]="birthDate"></mat-datepicker-toggle>
                       <mat-datepicker #birthDate></mat-datepicker>
@@ -266,7 +266,7 @@
                     </mat-form-field>
                   </div>
                   <div class="col-sm-4">
-                    <mat-form-field>
+                    <mat-form-field class="d-block">
                       <input matInput [matDatepicker]="memberShipStartDate" formControlName="memberShipStartDate" placeholder="Membership Start Date">
                       <mat-datepicker-toggle matSuffix [for]="memberShipStartDate"></mat-datepicker-toggle>
                       <mat-datepicker #memberShipStartDate></mat-datepicker>
@@ -552,10 +552,39 @@
                     </p>
                     <mat-divider></mat-divider>
                     <strong class="d-block mt-3">PURCHASE BODIMETRICS: $240</strong>
+                    <div class="row mt-3">
+                      <div class="col-sm-3">
+                        <label>Quantity</label>
+                        <div class="input-group input-group-sm mb-3 rounded-0 shadow-sm">
+                            <div class="input-group-prepend rounded-0 shadow-sm">
+                                <span class="input-group-text rounded-0"><mat-icon>remove</mat-icon></span>
+                              </div>
+                            <input type="text" class="form-control rounded-0 shadow-sm" value="1">
+                            <div class="input-group-append rounded-0 shadow-sm">
+                              <span class="input-group-text rounded-0"><mat-icon>add</mat-icon></span>
+                            </div>
+                          </div>
+                      </div>
+                    </div>
                   </div>
                   <div class="col-sm-5">
-                    <img src="assets/img/4.jpg" class="image-fluid" alt="">
+                    <img src="assets/img/4.jpg" class="img-fluid" alt="">
                   </div>
+                </div>
+
+                <div class="row">
+                  <p>
+                      * International Medical Group® (IMG®) is a leader in global benefits and travel insurance 
+                      services. The above is a summary of benefits. Please review the insurance policy for detailed 
+                      description of the terms, conditions and exclusions. Plan availability and benefits may change
+                       per state. If you are not satisfied for any reason, you may cancel insurance under this policy 
+                       by giving written notice within the first to occur: (a) 10 days from the effective (purchase) 
+                       date of your insurance; or (b) your scheduled departure date. The policy is non-refundable 
+                       after 10 days. Insurance benefits are underwritten by the United States Fire Insurance Company.
+                        Crum & Forster are registered trademarks of United States Fire Insurance Company. The Crum & 
+                        Forster group of companies is rated A (Excellent) by AM Best Company 2015.
+                      Cancel and Interrupt for Any Reason is not available to residents of the state of New York.
+                  </p>
                 </div>
                 
 
@@ -644,6 +673,155 @@
           </div>
         </mat-card>
       </mat-step>
+      <mat-step [stepControl]="checkOutForm">
+          <form [formGroup]="checkOutForm">
+            <ng-template matStepLabel>Checkout</ng-template>
+            <div class="row mb-5">
+              <div class="col-sm-9 additions">
+                <mat-card>
+                  <h4 class="form-title">CHECKOUT</h4>
+                  <div class="mb-3">
+                      <h5>Akif Khan</h5>
+                      <p>akifkhan75@gmail.com</p>
+                      <p>G11/4 Islamabad, Islamabad, Islamabad Capital Territory, Pakistan</p>
+                  </div>
+                  <mat-divider></mat-divider>
+                  <h4 class="form-title mt-3">BILLING ADDRESS</h4>
+                  <strong>My billing address is same as:</strong>
+                  <mat-form-field class="d-inline-block ml-3">
+                      <mat-select placeholder="Select Address">
+                        <mat-option *ngFor="let address of addresses" [value]="address.id">
+                          {{address.value}}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  <div class="form-group row mt-3">
+                      <div class="col-sm-6">
+                        <input type="text" class="form-control rounded-0 shadow-sm" placeholder="Address 1">
+                      </div>
+                      <div class="col-sm-6">
+                        <input type="text" class="form-control rounded-0 shadow-sm" placeholder="Address 2">
+                      </div>
+                    </div>
+                    <div class="form-group row mt-3 mb-4">
+                      <div class="col-sm-6">
+                        <input type="text" class="form-control rounded-0 shadow-sm" placeholder="Search Your City">
+                      </div>
+                      <div class="col-sm-6">
+                        <input type="text" class="form-control rounded-0 shadow-sm" placeholder="Zip Code">
+                      </div>
+                    </div>
+                    <mat-divider></mat-divider>
+                    <h4 class="form-title mt-4">CREDIT CARD INFORMATION</h4>
+                    <div class="form-group row my-3">
+                        <div class="col-sm-6">
+                          <input type="text" class="form-control rounded-0 shadow-sm" placeholder="First Name">
+                        </div>
+                        <div class="col-sm-6">
+                          <input type="text" class="form-control rounded-0 shadow-sm" placeholder="Last Name">
+                        </div>
+                      </div>
+                      <div class="form-group row my-3">
+                          <div class="col-sm-4">
+                            <input type="text" class="form-control rounded-0 shadow-sm" placeholder="Credit Card Number">
+                          </div>
+                          <div class="col-sm-3">
+                            <input type="text" class="form-control rounded-0 shadow-sm" placeholder="Expiration Month">
+                          </div>
+                          <div class="col-sm-3">
+                              <input type="text" class="form-control rounded-0 shadow-sm" placeholder="Expiration Year">
+                            </div>
+                            <div class="col-sm-2">
+                                <input type="text" class="form-control rounded-0 shadow-sm" placeholder="CCV">
+                              </div>
+                        </div>
+                        <mat-divider></mat-divider>
+                        <h4 class="form-title mt-3">REFERRAL</h4>
+                </mat-card>
+              </div>
+              <div class="col-sm-3">
+                <mat-card>
+                  <h4 class="mb-2">Summary</h4>
+                  <mat-divider></mat-divider>
+                  <table class="table-sm mt-2 mb-4">
+                    <tr>
+                      <td>
+                        <mat-icon [class.success-icon]="memberShip != 'Please Select'" [class.error-icon]="planSelectForm.controls['memberShip'].hasError('required')">done_all</mat-icon>
+                      </td>
+                      <td>Membership</td>
+                      <td>
+                        <strong>{{memberShip}}</strong>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <mat-icon *ngIf="memberShip == 'Please Select'">done</mat-icon>
+                        <mat-icon *ngIf="memberShip != 'Please Select'" [class.success-icon]="memberShipType != 'Please Select'" [class.error-icon]="planSelectForm.controls['memberShipType'].hasError('required')">done_all</mat-icon>
+                      </td>
+                      <td>Type</td>
+                      <td>
+                        <strong>{{memberShipType}}</strong>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <mat-icon *ngIf="memberShipType == 'Please Select'">done</mat-icon>
+                        <mat-icon *ngIf="memberShipType != 'Please Select'" [class.success-icon]="memberShipTerm != 'Please Select'" [class.error-icon]="planSelectForm.controls['memberShipTerm'].hasError('required')">done_all</mat-icon>
+                      </td>
+                      <td>Term</td>
+                      <td>
+                        <strong>{{memberShipTerm}}</strong>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <mat-icon *ngIf="memberShipTerm == 'Please Select'">done</mat-icon>
+                        <mat-icon *ngIf="memberShipTerm != 'Please Select'" [class.success-icon]="maxTripLength != 'Please Select'" [class.error-icon]="planSelectForm.controls['maxTripLength'].hasError('required')">done_all</mat-icon>
+                      </td>
+                      <td>Max Trip Length</td>
+                      <td>
+                        <strong>{{maxTripLength}}</strong>
+                      </td>
+                    </tr>
+                  </table>
+                  <mat-divider></mat-divider>
+                  <div class="d-flex align-items-center justify-content-between my-3">
+                    <mat-checkbox>Auto Renew</mat-checkbox>
+                    <mat-icon color="primary">help</mat-icon>
+                  </div>
+                  <mat-divider></mat-divider>
+                  <div class="my-2">
+                    <h5>Membership</h5>
+                    <h4>$ 0.00</h4>
+                  </div>
+                  <mat-divider></mat-divider>
+                  <div class="my-2">
+                    <h5>Grand Total</h5>
+                    <h4>$ 0.00</h4>
+                  </div>
+                </mat-card>
+              </div>
+            </div>
+          </form>
+          <mat-card class="fixed-bottom fixed-buttons-bar">
+            <div class="container d-flex justify-content-between align-items-center">
+              <h5 class="mb-0">Need Help? Call us at:
+                <span class="text-danger">+1 617-459-4200</span>
+              </h5>
+              <div class="d-flex align-items-center">
+                <div class="d-inline-block mr-3">
+                  <b>Pyment Due</b>
+                  <h5 class="mb-0">$0.00</h5>
+                </div>
+                <div>
+                  <button mat-raised-button mat-button matStepperPrevious class="mr-2">Back</button>
+                  <button type="submit" mat-button mat-raised-button color="primary" matStepperNext>Continue</button>
+                </div>
+              </div>
+  
+            </div>
+          </mat-card>
+        </mat-step>
 
       <mat-step>
         <ng-template matStepLabel>Confirmation</ng-template>

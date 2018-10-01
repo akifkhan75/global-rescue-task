@@ -10,7 +10,7 @@ import {
   Validators, 
   FormBuilder } from '@angular/forms';
 
-import { MatCardModule, MatMenuModule, MatStepperModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatIconModule, MatRadioModule, MatDividerModule, MatCheckboxModule, MatDatepickerModule, MatNativeDateModule } from '@angular/material';
+import { MatCardModule, MatMenuModule, MatStepperModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatIconModule, MatRadioModule, MatDividerModule, MatCheckboxModule, MatDatepickerModule, MatNativeDateModule, MatSelectModule } from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { EnrollmentProcessComponent } from './components/enrollment-process/enrollment-process.component';
@@ -41,7 +41,8 @@ const routes: Routes = [
     MatDividerModule,
     MatCheckboxModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatSelectModule
   ],
   providers: [MatDatepickerModule],
   bootstrap: [AppComponent]

@@ -12,6 +12,7 @@ export class EnrollmentProcessComponent implements OnInit {
   planSelectForm: FormGroup;
   memberDetails: FormGroup;
   additionsForm: FormGroup;
+  checkOutForm: FormGroup;
 
   // plan select
   memberShip: string = 'Please Select';
@@ -20,6 +21,12 @@ export class EnrollmentProcessComponent implements OnInit {
   maxTripLength: string = 'Please Select';
 
   addFamilyForm:boolean = false;
+
+  addresses = [
+    {id: 'Residence', value: 'Residence'},
+    {id: 'Mailing', value: 'Mailing'},
+    {id: 'Other', value: 'Other'}
+  ];
 
   constructor(private _formBuilder: FormBuilder) {}
 
@@ -41,6 +48,9 @@ export class EnrollmentProcessComponent implements OnInit {
     });
     this.additionsForm = this._formBuilder.group({
       test: ['']
+    });
+    this.checkOutForm = this._formBuilder.group({
+      test: ['']
     })
   }
 
@@ -52,13 +62,24 @@ export class EnrollmentProcessComponent implements OnInit {
   }
 
   addMemberShipPlan(data){
-    console.log(data)
     if(this.planSelectForm.valid){
+      console.log(data)
     } else {
-      this.planSelectForm.controls['memberShip'].markAsTouched();
-      this.planSelectForm.controls['memberShipType'].markAsTouched();
-      this.planSelectForm.controls['memberShipTerm'].markAsTouched();
-      this.planSelectForm.controls['maxTripLength'].markAsTouched();
+      this.planSelectForm.controls['firstName'].markAsTouched();
+      this.planSelectForm.controls['lastName'].markAsTouched();
+      this.planSelectForm.controls['phoneNo'].markAsTouched();
+      this.planSelectForm.controls['birthDate'].markAsTouched();
+    }
+  }
+
+  addMemberInfo(data){
+    if(this.memberDetails.valid){
+      console.log(data)
+    } else {
+      this.memberDetails.controls['memberShip'].markAsTouched();
+      this.memberDetails.controls['memberShipType'].markAsTouched();
+      this.memberDetails.controls['memberShipTerm'].markAsTouched();
+      this.memberDetails.controls['maxTripLength'].markAsTouched();
     }
   }
 
